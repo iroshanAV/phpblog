@@ -1,6 +1,4 @@
 <?php
-
-
 $db = new database();
 $query= "SELECT * FROM categories ";
 $cats = $db->select($query);
@@ -15,8 +13,7 @@ $cats = $db->select($query);
             <ol class="list-unstyled">
 			<?php while($row = $cats->fetch_array()) : ?>
               <li><a href="category.php?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></li>
-            <?php endwhile; ?>  
-             
+            <?php endwhile; ?>               
             </ol>
           </div>
          
