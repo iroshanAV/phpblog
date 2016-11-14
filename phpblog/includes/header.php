@@ -8,7 +8,6 @@ $db = new database();
 $query= "SELECT * FROM posts order by id DESC";
 $posts = $db->select($query);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,11 +33,8 @@ $posts = $db->select($query);
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
   </head>
-
   <body>
-
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
@@ -48,32 +44,23 @@ $posts = $db->select($query);
 		  <?php if(isset($_SESSION['email'])) :?>
           <a class="blog-nav-item pull-right" href="admin/index.php">Go to Admin Panel</a>
 		  <?php endif; ?>
-		  
-
 		  </nav>
       </div>
     </div>
-
     <div class="container">
-
       <div class="blog-header">
         <h1 class="blog-title">My Diary</h1>
         <p class="lead blog-description">It's all about the present...</p>
       </div>
-
       <div class="row">
-
         <div class="col-sm-8 blog-main">
-
 		<?php while($row = $posts->fetch_array()) :?>
           <div class="blog-post">
             <h2 class="blog-post-title"><?php echo $row['title']; ?></h2>
             <p class="blog-post-meta"> on <?php echo formatDate($row['date']); ?> by <a href="#"><?php echo $row['author']; ?></a></p>
                <img style="float:left;margin-right:20px;margin-bottom:10px" src='images/<?php echo $row['image']; ?>'width="200" height="200">	
             <p style="text-align:justify"><?php echo substr($row['content'],0,300); ?></p>   
-          	<a id="readmore" href="single_post.php?id=<?php echo $row['id']; ?> ">Read More </a> 
-            
+          	<a id="readmore" href="single_post.php?id=<?php echo $row['id']; ?> ">Read More </a>             
           </div><!-- /.blog-post -->
           <?php endwhile; ?>
-
         </div><!-- /.blog-main -->
